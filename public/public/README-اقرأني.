@@ -1,0 +1,32 @@
+نسخة تجريبية مستقلة — منيو نادي النسور
+=====================================
+
+مهم جدًا:
+- هذه النسخة منفصلة عن المنيو المنشور حاليًا.
+- اسم Worker التجريبي: nady-el-nosour-menu-test
+- اسم قاعدة D1 التجريبية: nady-el-nosour-menu-test
+- لا تستخدم Worker الإنتاج dawn-term-2eb2 أو قاعدة الإنتاج nady-el-nosour-menu.
+- لا تحذف أو تعدّل مشروع الإنتاج.
+
+محتويات المجلد:
+- worker.js: خادم المنيو وواجهات الإدارة.
+- public/index.html: المنيو العام.
+- public/admin.html: لوحة الإدارة.
+- schema.sql: إنشاء جدول قاعدة البيانات.
+- seed.sql: إدخال بيانات المنيو المستوردة (405 سجلًا).
+- wrangler.jsonc: إعداد Worker التجريبي.
+
+خطوات النشر من كمبيوتر:
+1) أنشئ D1 Database جديدة باسم nady-el-nosour-menu-test من Cloudflare.
+2) انسخ Database ID وضعه بدل PASTE_TEST_D1_DATABASE_ID_HERE في wrangler.jsonc.
+3) من مجلد المشروع نفّذ:
+   npx wrangler d1 execute nady-el-nosour-menu-test --remote --file=./schema.sql
+   npx wrangler d1 execute nady-el-nosour-menu-test --remote --file=./seed.sql
+4) اضبط كلمة مرور الإدارة كـ Secret:
+   npx wrangler secret put ADMIN_PASSWORD
+   أدخل كلمة المرور المطلوبة عند الطلب.
+5) انشر Worker:
+   npx wrangler deploy
+6) افتح رابط Worker التجريبي ثم /admin.html للوحة الإدارة.
+
+ملاحظة: لا تنفذ هذه الأوامر على مشروع الإنتاج. لا تنشر قبل ضبط D1 ID وتهيئة القاعدة.
