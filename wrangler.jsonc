@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nady-el-nosour-menu-test",
+  "main": "worker.js",
+  "compatibility_date": "2026-11-03",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "nady_nosour_test_db",
+      "database_id": "2cdbd137-a4ce-4682-ad5d-a9dd54406897"
+    }
+  ]
+}
