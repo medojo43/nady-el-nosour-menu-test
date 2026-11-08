@@ -5,111 +5,328 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#082d25">
-<title>منيو نادي النسور</title>
+<title>دار القوات الجوية (نادي النسور) | MENU</title>
 <style>
-:root{--g:#082d25;--g2:#104638;--gold:#d7b65f;--paper:#fffdf7;--ink:#24332e}
+:root {
+--green:#082d25;
+--gold:#d7b65f;
+--gold2:#f1d98e;
+--paper:#fffdf7;
+}
 *{box-sizing:border-box}
-body{margin:0;background:#f3f0e6;color:var(--ink);font-family:Tahoma,Arial,sans-serif}
-header{background:linear-gradient(135deg,var(--g),var(--g2));color:#f8e6ae;text-align:center;padding:24px 14px;border-bottom:4px solid var(--gold)}
-h1{margin:0;font-size:25px}
-.sub{margin-top:7px;font-size:13px}
-.admin-link{display:inline-block;margin-top:15px;padding:9px 22px;border:1px solid var(--gold);border-radius:10px;background:transparent;color:#f8e6ae;text-decoration:none;font-size:14px;font-weight:bold}
-main{max-width:900px;margin:18px auto;padding:0 12px}
-.nav{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.nav button,.cat{border:1px solid var(--gold);border-radius:13px;background:var(--g);color:#f8e6ae;padding:15px 8px;font-size:16px;font-weight:bold;cursor:pointer}
-.panel{display:none;background:var(--paper);border:1px solid #e2d5ad;border-radius:14px;padding:14px;margin-top:14px}
+body{
+margin:0;background:#f0eee6;
+color:#24332d;
+font-family:Tahoma,Arial,sans-serif
+}
+.hero{
+background:var(--green);
+border-bottom:4px solid var(--gold);
+overflow:hidden
+}
+.hero img{
+display:block;width:100%;
+max-height:350px;
+object-fit:cover;
+object-position:center top
+}
+.hero-title{
+background:linear-gradient(120deg,#071d18,#14513c,#071d18);
+color:var(--gold2);
+text-align:center;
+padding:13px 10px 16px
+}
+.hero-title strong{
+display:block;
+font-size:clamp(21px,5vw,32px)
+}
+.hero-title span{
+display:block;
+font:700 20px Georgia,serif;
+letter-spacing:5px;
+margin-top:4px
+}
+main{
+max-width:1000px;
+margin:16px auto;
+padding:0 12px
+}
+.section-grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:12px
+}
+.section-card{
+border:2px solid var(--gold);
+border-radius:16px;
+padding:0;
+overflow:hidden;
+background:var(--green);
+color:#fff1bd;
+box-shadow:0 4px 12px #0002;
+cursor:pointer;
+text-align:center
+}
+.section-card img{
+display:block;width:100%;
+aspect-ratio:1.9/1;
+object-fit:cover
+}
+.section-card span{
+display:block;padding:12px 8px;
+font-weight:bold;font-size:16px
+}
+.panel{
+display:none;
+background:var(--paper);
+border:1px solid #e2d5ad;
+border-radius:16px;
+padding:14px;margin-top:16px
+}
 .panel.active{display:block}
-.back{background:transparent;border:0;color:var(--g);font-weight:bold;font-size:15px;padding:5px 0 12px}
+.panel-head{
+display:flex;align-items:center;
+justify-content:space-between;
+gap:8px;border-bottom:2px solid var(--gold);
+padding-bottom:10px;margin-bottom:12px
+}
+.panel-head h2{margin:0;color:var(--green)}
+.back,.cat{
+border:1px solid var(--gold);
+border-radius:9px;
+background:var(--green);
+color:#fff0bd;
+padding:10px;
+font-weight:bold
+}
 .cats{display:flex;flex-wrap:wrap;gap:8px}
-.cat{font-size:14px;padding:10px 12px}
-.cat.active{background:var(--gold);color:var(--g)}
-.items{margin-top:12px}
-.item{display:flex;justify-content:space-between;gap:12px;padding:12px 8px;border-bottom:1px solid #e9e0c9}
-.name{font-weight:bold}
-.prices{font-size:13px;text-align:left;white-space:nowrap;color:#735719}
-.empty{text-align:center;padding:20px;color:#777}
-footer{text-align:center;color:#e9d79f;background:var(--g);padding:16px;margin-top:24px}
-@media(max-width:420px){h1{font-size:22px}.nav button{font-size:14px}}
+.cat.active{background:var(--gold);color:var(--green)}
+.item-table{
+margin-top:14px;
+border:1px solid #d9c58a;
+border-radius:12px;overflow:hidden
+}
+.item-head,.item-row{
+display:grid;
+grid-template-columns:minmax(0,1fr) 90px 90px;
+align-items:stretch
+}
+.item-head{
+background:linear-gradient(90deg,#d7b65f,#f1d98e);
+color:#172b22;font-weight:bold;text-align:center
+}
+.item-head>div{
+padding:10px 5px;
+border-left:1px solid #a78a43
+}
+.item-row{
+background:#fffef9;
+border-top:1px solid #eadfbd
+}
+.item-row:nth-child(odd){background:#f8f4e9}
+.item-name{
+padding:12px 10px;
+text-align:right;font-weight:bold;
+align-self:center;overflow-wrap:anywhere
+}
+.price{
+display:flex;align-items:center;
+justify-content:center;
+padding:8px 4px;
+text-align:center;
+border-right:1px solid #eadfbd;
+color:#5e4a19;font-weight:bold
+}
+.phone-value{
+grid-column:2/4;
+direction:ltr;text-align:left;
+padding:12px 10px;color:var(--green);
+font-weight:bold
+}
+.note{font-size:11px;color:#777;margin-top:4px}
+.loading,.empty{padding:20px;text-align:center;color:#777}
+.admin{
+display:block;width:max-content;
+margin:18px auto 0;
+border:1px solid var(--gold);
+border-radius:10px;padding:10px 22px;
+color:var(--gold2);
+background:var(--green);
+text-decoration:none;font-weight:bold
+}
+footer{
+margin-top:24px;background:var(--green);
+color:#ead69b;text-align:center;
+padding:17px 10px;
+border-top:3px solid var(--gold)
+}
+@media(min-width:650px){
+.section-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:380px){
+.item-head,.item-row{
+grid-template-columns:minmax(0,1fr) 76px 76px
+}
+.item-head>div{font-size:12px}
+.item-name,.price{font-size:13px}
+}
 </style>
 </head>
 <body>
-<header>
-<h1>نادي النسور</h1>
-<div class="sub">المنيو الإلكتروني • دار القوات الجوية</div>
-<a class="admin-link" href="/admin">إدارة المنيو</a>
+
+<header class="hero">
+<img src="/images/eagles-aviation-header.jpg"
+alt="نسر وطائرات دار القوات الجوية">
+<div class="hero-title">
+<strong>دار القوات الجوية (نادي النسور)</strong>
+<span>MENU</span>
+</div>
 </header>
 
 <main>
-<div id="home" class="nav"></div>
-<section id="section" class="panel">
-<button class="back" onclick="showHome()">← الرجوع للأقسام</button>
+<div id="home" class="section-grid">
+<div class="loading">جاري تحميل المنيو...</div>
+</div>
+
+<section id="sectionPanel" class="panel">
+<div class="panel-head">
 <h2 id="sectionTitle"></h2>
-<div id="cats" class="cats"></div>
-<div id="items" class="items"></div>
+<button class="back" onclick="showHome()">الأقسام الرئيسية</button>
+</div>
+<div id="categories" class="cats"></div>
+<div id="items" class="item-table"></div>
 </section>
-<div id="status" class="empty">جاري تحميل المنيو...</div>
+
+<a class="admin" href="/admin.html">دخول لوحة الإدارة</a>
 </main>
 
-<footer>نادي النسور • المنيو الإلكتروني</footer>
+<footer>
+أهلاً وسهلاً بكم في دار القوات الجوية (نادي النسور)
+</footer>
 
 <script>
-let all=[];
-const home=document.querySelector('#home');
-const panel=document.querySelector('#section');
-const cats=document.querySelector('#cats');
-const items=document.querySelector('#items');
-const statusBox=document.querySelector('#status');
+const SECTIONS=[
+{name:"الميراج",image:"mirage.svg"},
+{name:"المطعم الرئيسي",image:"main-restaurant.svg"},
+{name:"مطعم الفندق",image:"hotel.svg"},
+{name:"كافتريا الحديقة",image:"garden-cafe.svg"},
+{name:"دليل التليفونات الداخلية",image:"directory.svg"}
+];
+
+let allItems=[];
+const home=document.getElementById("home");
+const panel=document.getElementById("sectionPanel");
+const categories=document.getElementById("categories");
+const itemsBox=document.getElementById("items");
+
+function esc(v){
+return String(v??"").replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",
+'"':"&quot;","'":"&#39;"
+}[c]));
+}
+
+function sortItems(a,b){
+return String(a.sort_order||"").localeCompare(
+String(b.sort_order||""),undefined,{numeric:true}
+);
+}
 
 function showHome(){
-panel.classList.remove('active');
-home.style.display='grid';
-statusBox.style.display='none';
+panel.classList.remove("active");
+home.style.display="grid";
+window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function showSection(name){
-home.style.display='none';
-statusBox.style.display='none';
-panel.classList.add('active');
-document.querySelector('#sectionTitle').textContent=name;
-const subset=all.filter(x=>x.section===name);
-const names=[...new Set(subset.map(x=>x.category||'أصناف متنوعة'))];
-cats.innerHTML='';
-items.innerHTML='';
-names.forEach((c,i)=>{
-const b=document.createElement('button');
-b.className='cat'+(i===0?' active':'');
-b.textContent=c;
-b.onclick=()=>showCategory(name,c,b);
-cats.append(b);
+const rows=allItems.filter(x=>x.section===name).sort(sortItems);
+document.getElementById("sectionTitle").textContent=name;
+home.style.display="none";
+panel.classList.add("active");
+
+const cats=[...new Set(rows.map(x=>x.category||"أصناف متنوعة"))];
+categories.innerHTML="";
+itemsBox.innerHTML="";
+
+cats.forEach((cat,i)=>{
+const b=document.createElement("button");
+b.className="cat"+(i===0?" active":"");
+b.textContent=cat;
+b.onclick=()=>showCategory(name,cat,b);
+categories.appendChild(b);
 });
-if(names.length)showCategory(name,names[0],cats.firstChild);
+
+if(cats.length){
+showCategory(name,cats[0],categories.firstElementChild);
+}else{
+itemsBox.innerHTML='<div class="empty">لا توجد أصناف مسجلة في هذا القسم</div>';
+}
+panel.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-function showCategory(section,category,btn){
-[...cats.children].forEach(x=>x.classList.toggle('active',x===btn));
-const list=all.filter(x=>x.section===section&&(x.category||'أصناف متنوعة')===category);
-items.innerHTML=list.map(x=>`<div class="item"><div class="name">${esc(x.item)}${x.notes?`<div style="font-size:12px;font-weight:normal;color:#777">${esc(x.notes)}</div>`:''}</div><div class="prices">${x.civilian_price!=null?`مدني: ${x.civilian_price}`:''}${x.member_price!=null?`<br>عضو الدار: ${x.member_price}`:''}</div></div>`).join('')||'<div class="empty">لا توجد أصناف في هذا التصنيف</div>';
+function showCategory(section,category,button){
+[...categories.children].forEach(b=>
+b.classList.toggle("active",b===button)
+);
+
+const rows=allItems.filter(x=>
+x.section===section&&
+(x.category||"أصناف متنوعة")===category
+).sort(sortItems);
+
+const isPhone=section==="دليل التليفونات الداخلية";
+
+let html=isPhone?'':
+'<div class="item-head"><div>الصنف</div><div>سعر مدني</div><div>سعر عضو الدار</div></div>';
+
+html+=rows.map(x=>{
+const note=x.notes?
+`<div class="note">${esc(x.notes)}</div>`:"";
+
+if(isPhone){
+return `<div class="item-row">
+<div class="item-name">${esc(x.item)}</div>
+<div class="phone-value">${esc(x.notes||"—")}</div>
+</div>`;
 }
 
-function esc(s){
-return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+return `<div class="item-row">
+<div class="item-name">${esc(x.item)}${note}</div>
+<div class="price">${x.civilian_price==null?"—":esc(x.civilian_price)}</div>
+<div class="price">${x.member_price==null?"—":esc(x.member_price)}</div>
+</div>`;
+}).join("");
+
+itemsBox.innerHTML=html||
+'<div class="empty">لا توجد أصناف في هذا التصنيف</div>';
 }
 
-fetch('/api/menu')
-.then(r=>r.json())
-.then(d=>{
-all=d.items||[];
-const sections=[...new Set(all.map(x=>x.section))];
-home.innerHTML='';
-sections.forEach(s=>{
-const b=document.createElement('button');
-b.textContent=s;
-b.onclick=()=>showSection(s);
-home.append(b);
+function drawSections(){
+home.innerHTML="";
+SECTIONS.forEach(s=>{
+const b=document.createElement("button");
+b.className="section-card";
+b.innerHTML=`<img src="/images/${s.image}" alt=""><span>${esc(s.name)}</span>`;
+b.onclick=()=>showSection(s.name);
+home.appendChild(b);
 });
-statusBox.style.display='none';
-})
-.catch(()=>statusBox.textContent='تعذر تحميل المنيو. يرجى المحاولة لاحقًا.');
+}
+
+async function loadMenu(){
+try{
+const r=await fetch("/api/menu",{
+headers:{"accept":"application/json"}
+});
+if(!r.ok)throw new Error("HTTP "+r.status);
+const d=await r.json();
+allItems=Array.isArray(d.items)?d.items:[];
+drawSections();
+}catch(e){
+home.innerHTML='<div class="empty">تعذر تحميل المنيو. تأكد من اتصال قاعدة البيانات ثم أعد المحاولة.</div>';
+}
+}
+
+loadMenu();
 </script>
 </body>
 </html>
