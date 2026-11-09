@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -16,6 +15,7 @@
   --gold2:#f3dfa0;
   --paper:#fffdf7;
 }
+
 *{box-sizing:border-box}
 
 body{
@@ -49,12 +49,16 @@ body{
 .hero:before{right:-100px}
 .hero:after{left:-100px}
 
+/* صورة النسر الذهبية */
 .hero-art{
   width:100%;
   height:230px;
   display:block;
   position:relative;
   z-index:1;
+  object-fit:contain;
+  object-position:center;
+  padding:5px 12px;
 }
 
 .hero-title{
@@ -112,7 +116,7 @@ main{
   border-radius:15px;
   background:#082b21;
   color:#fff0bd;
-  box-shadow:0 7px 18px #0008, inset 0 0 0 1px #fff2;
+  box-shadow:0 7px 18px #0008,inset 0 0 0 1px #fff2;
   cursor:pointer;
   text-align:center;
   transition:transform .2s,box-shadow .2s;
@@ -176,6 +180,7 @@ main{
   margin-top:18px;
   box-shadow:0 8px 25px #0005;
 }
+
 .panel.active{display:block}
 
 .panel-head{
@@ -204,7 +209,7 @@ main{
   cursor:pointer;
 }
 
-/* تنسيق أزرار التصنيفات الداخلية */
+/* أزرار التصنيفات */
 .cats{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(135px,1fr));
@@ -223,12 +228,7 @@ main{
   padding:12px 8px;
   border:1.5px solid var(--gold);
   border-radius:11px;
-  background:linear-gradient(
-    135deg,
-    #061e18,
-    #14503a,
-    #061e18
-  );
+  background:linear-gradient(135deg,#061e18,#14503a,#061e18);
   color:#fff0bd;
   font-family:Tahoma,Arial,sans-serif;
   font-size:14px;
@@ -243,19 +243,13 @@ main{
 }
 
 .cat.active{
-  background:linear-gradient(
-    135deg,
-    #f3dfa0,
-    #c9a64e
-  );
+  background:linear-gradient(135deg,#f3dfa0,#c9a64e);
   color:#061e18;
   border-color:#a98635;
   box-shadow:0 3px 10px #c9a64e55;
 }
 
-.cat:active{
-  transform:scale(.97);
-}
+.cat:active{transform:scale(.97)}
 
 /* جدول الأصناف والأسعار */
 .item-table{
@@ -321,6 +315,7 @@ main{
   text-decoration:none;
   align-self:center;
 }
+
 .phone-value:active{
   color:#9a762d;
   text-decoration:underline;
@@ -366,7 +361,9 @@ footer{
 }
 
 @media(min-width:650px){
-  .section-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .section-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
   .hero-art{height:310px}
   .section-card .art{aspect-ratio:1.55/1}
 }
@@ -386,6 +383,7 @@ footer{
   .item-head,.item-row{
     grid-template-columns:minmax(0,1fr) 76px 76px;
   }
+
   .item-head>div{font-size:12px}
   .item-name,.price{font-size:13px}
   .section-card span{font-size:14px}
@@ -397,74 +395,19 @@ footer{
 
 <header class="hero">
 
-<svg class="hero-art" viewBox="0 0 1000 420"
-xmlns="http://www.w3.org/2000/svg"
-role="img" aria-label="نسر وطائرات">
-
-<defs>
-  <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#f5df9b"/>
-    <stop offset=".5" stop-color="#c49b42"/>
-    <stop offset="1" stop-color="#775b25"/>
-  </linearGradient>
-  <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#fff0bd"/>
-    <stop offset="1" stop-color="#b18b3e"/>
-  </linearGradient>
-  <filter id="glow">
-    <feGaussianBlur stdDeviation="8"/>
-  </filter>
-</defs>
-
-<circle cx="500" cy="205" r="170" fill="#d7b65f"
-opacity=".07" filter="url(#glow)"/>
-
-<g fill="#e5cf8b" opacity=".65" transform="translate(145 90) scale(.8)">
-  <path d="M0 45 L90 30 L125 0 L140 0 L128 31
-  L205 40 L215 49 L128 55 L142 83 L128 83
-  L90 58 L0 54 Z"/>
-</g>
-
-<g fill="#e5cf8b" opacity=".45" transform="translate(740 115) scale(-.7 .7)">
-  <path d="M0 45 L90 30 L125 0 L140 0 L128 31
-  L205 40 L215 49 L128 55 L142 83 L128 83
-  L90 58 L0 54 Z"/>
-</g>
-
-<path d="M500 190 C420 125 330 90 230 78
-L300 125 L170 106 L250 155 L115 150
-L220 190 L90 202 L250 225 L350 242 L475 275Z"
-fill="url(#wing)" stroke="#f4dda0" stroke-width="3"/>
-
-<path d="M500 190 C580 125 670 90 770 78
-L700 125 L830 106 L750 155 L885 150
-L780 190 L910 202 L750 225 L650 242 L525 275Z"
-fill="url(#wing)" stroke="#f4dda0" stroke-width="3"/>
-
-<path d="M500 125 C450 150 445 215 470 265
-L500 320 L530 265 C555 215 550 150 500 125Z"
-fill="url(#body)" stroke="#f1d98e" stroke-width="3"/>
-
-<path d="M500 115 C465 105 450 75 470 55
-C485 42 505 49 515 62 L545 80 L520 85
-C540 110 520 125 500 115Z" fill="#f1d98e"/>
-
-<path d="M520 79 L550 92 L519 98Z" fill="#c99e42"/>
-
-<g fill="none" stroke="#725421" stroke-width="3" opacity=".8">
-  <path d="M475 190 L270 125 M455 210 L215 170
-  M460 235 L185 210 M525 190 L730 125
-  M545 210 L785 170 M540 235 L815 210"/>
-</g>
-
-<path d="M140 345 H860" stroke="#d7b65f" stroke-width="2" opacity=".7"/>
-<circle cx="500" cy="345" r="5" fill="#f1d98e"/>
-</svg>
+<!-- صورة النسر الذهبية من مجلد public -->
+<img
+  class="hero-art"
+  src="/eagle-vip.png"
+  alt="النسر الذهبي وطائرات نادي النسور"
+  fetchpriority="high"
+>
 
 <div class="hero-title">
   <strong>دار القوات الجوية (نادي النسور)</strong>
   <span>MENU</span>
 </div>
+
 </header>
 
 <main>
@@ -476,12 +419,15 @@ C540 110 520 125 500 115Z" fill="#f1d98e"/>
 </div>
 
 <section id="sectionPanel" class="panel">
+
   <div class="panel-head">
     <h2 id="sectionTitle"></h2>
     <button class="back" onclick="showHome()">الأقسام الرئيسية</button>
   </div>
+
   <div id="categories" class="cats"></div>
   <div id="items" class="item-table"></div>
+
 </section>
 
 <a class="admin" href="/admin.html">دخول لوحة الإدارة</a>
@@ -493,6 +439,7 @@ C540 110 520 125 500 115Z" fill="#f1d98e"/>
 </footer>
 
 <script>
+
 /* الأقسام الرئيسية الخمسة */
 const SECTIONS=[
   {
@@ -553,6 +500,7 @@ function showHome(){
 
 /* فتح القسم */
 function showSection(name){
+
   const rows=allItems
     .filter(x=>x.section===name)
     .sort(sortItems);
@@ -570,18 +518,26 @@ function showSection(name){
   itemsBox.innerHTML="";
 
   cats.forEach((cat,i)=>{
+
     const b=document.createElement("button");
+
     b.className="cat"+(i===0?" active":"");
     b.textContent=cat;
+
     b.onclick=()=>showCategory(name,cat,b);
+
     categories.appendChild(b);
   });
 
   if(cats.length){
+
     showCategory(name,cats[0],categories.firstElementChild);
+
   }else{
+
     itemsBox.innerHTML=
       '<div class="empty">لا توجد أصناف مسجلة في هذا القسم</div>';
+
   }
 
   panel.scrollIntoView({behavior:"smooth",block:"start"});
@@ -589,6 +545,7 @@ function showSection(name){
 
 /* عرض التصنيف */
 function showCategory(section,category,button){
+
   [...categories.children].forEach(b=>
     b.classList.toggle("active",b===button)
   );
@@ -610,41 +567,57 @@ function showCategory(section,category,button){
     </div>`;
 
   html+=rows.map(x=>{
+
     const note=x.notes?
       `<div class="note">${esc(x.notes)}</div>`:"";
 
     if(isPhone){
+
       const phoneText=String(x.notes||"").trim();
 
       const phoneLink=phoneText
-        .replace(/[٠-٩]/g,d=>"0123456789"["٠١٢٣٤٥٦٧٨٩".indexOf(d)])
-        .replace(/[۰-۹]/g,d=>"0123456789"["۰۱۲۳۴۵۶۷۸۹".indexOf(d)])
+        .replace(/[٠-٩]/g,d=>
+          "0123456789"["٠١٢٣٤٥٦٧٨٩".indexOf(d)]
+        )
+        .replace(/[۰-۹]/g,d=>
+          "0123456789"["۰۱۲۳۴۵۶۷۸۹".indexOf(d)]
+        )
         .replace(/[^0-9+]/g,"");
 
       return `
         <div class="item-row">
-          <div class="item-name">${esc(x.item)}</div>
+
+          <div class="item-name">
+            ${esc(x.item)}
+          </div>
+
           <a class="phone-value"
              href="tel:${esc(phoneLink)}"
              aria-label="اتصال بـ ${esc(x.item)}">
              ${esc(phoneText||"—")}
           </a>
+
         </div>`;
     }
 
     return `
       <div class="item-row">
+
         <div class="item-name">
           ${esc(x.item)}
           ${note}
         </div>
+
         <div class="price">
           ${x.civilian_price==null?"—":esc(x.civilian_price)}
         </div>
+
         <div class="price">
           ${x.member_price==null?"—":esc(x.member_price)}
         </div>
+
       </div>`;
+
   }).join("");
 
   itemsBox.innerHTML=html||
@@ -653,9 +626,11 @@ function showCategory(section,category,button){
 
 /* رسم الأزرار الرئيسية بالصور */
 function drawSections(){
+
   home.innerHTML="";
 
   SECTIONS.forEach(s=>{
+
     const b=document.createElement("button");
     b.className="section-card";
 
@@ -676,13 +651,17 @@ function drawSections(){
     b.appendChild(title);
 
     b.onclick=()=>showSection(s.name);
+
     home.appendChild(b);
+
   });
 }
 
 /* تحميل المنيو من قاعدة البيانات */
 async function loadMenu(){
+
   try{
+
     const r=await fetch("/api/menu",{
       headers:{"accept":"application/json"}
     });
@@ -692,21 +671,25 @@ async function loadMenu(){
     }
 
     const d=await r.json();
+
     allItems=Array.isArray(d.items)?d.items:[];
 
     drawSections();
 
   }catch(e){
+
     home.innerHTML=`
       <div class="empty">
         تعذر تحميل المنيو. تأكد من اتصال قاعدة البيانات ثم أعد المحاولة.
       </div>`;
 
     console.error("Menu loading error:",e);
+
   }
 }
 
 loadMenu();
+
 </script>
 
 </body>
