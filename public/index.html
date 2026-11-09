@@ -204,15 +204,57 @@ main{
   cursor:pointer;
 }
 
+/* تنسيق أزرار التصنيفات الداخلية */
 .cats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(135px,1fr));
+  gap:12px;
+  align-items:stretch;
+  width:100%;
+  margin-top:12px;
+}
+
+.cat{
   display:flex;
-  flex-wrap:wrap;
-  gap:8px;
+  align-items:center;
+  justify-content:center;
+  min-height:52px;
+  width:100%;
+  padding:12px 8px;
+  border:1.5px solid var(--gold);
+  border-radius:11px;
+  background:linear-gradient(
+    135deg,
+    #061e18,
+    #14503a,
+    #061e18
+  );
+  color:#fff0bd;
+  font-family:Tahoma,Arial,sans-serif;
+  font-size:14px;
+  font-weight:bold;
+  line-height:1.5;
+  text-align:center;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  box-shadow:0 3px 8px #0002;
+  cursor:pointer;
+  transition:all .2s ease;
 }
 
 .cat.active{
-  background:var(--gold);
-  color:var(--green);
+  background:linear-gradient(
+    135deg,
+    #f3dfa0,
+    #c9a64e
+  );
+  color:#061e18;
+  border-color:#a98635;
+  box-shadow:0 3px 10px #c9a64e55;
+}
+
+.cat:active{
+  transform:scale(.97);
 }
 
 /* جدول الأصناف والأسعار */
@@ -330,6 +372,17 @@ footer{
 }
 
 @media(max-width:380px){
+  .cats{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px;
+  }
+
+  .cat{
+    min-height:48px;
+    font-size:13px;
+    padding:10px 5px;
+  }
+
   .item-head,.item-row{
     grid-template-columns:minmax(0,1fr) 76px 76px;
   }
