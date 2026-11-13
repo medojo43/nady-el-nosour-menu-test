@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -26,7 +27,6 @@ body{
     radial-gradient(ellipse at top,#173e30 0%,#071d17 58%,#04130f 100%);
 }
 
-/* الواجهة الرئيسية */
 .hero{
   position:relative;
   overflow:hidden;
@@ -49,7 +49,6 @@ body{
 .hero:before{right:-100px}
 .hero:after{left:-100px}
 
-/* صورة النسر الذهبية */
 .hero-art{
   width:100%;
   height:230px;
@@ -86,7 +85,6 @@ body{
   text-shadow:0 2px 8px #000;
 }
 
-/* منطقة الأزرار */
 main{
   max-width:1050px;
   margin:25px auto;
@@ -122,9 +120,7 @@ main{
   transition:transform .2s,box-shadow .2s;
 }
 
-.section-card:active{
-  transform:scale(.975);
-}
+.section-card:active{transform:scale(.975)}
 
 .section-card .art{
   display:block;
@@ -168,6 +164,39 @@ main{
   background:linear-gradient(100deg,#061e18,#14503a,#061e18);
   border-top:1px solid var(--gold);
   text-shadow:0 2px 4px #000;
+}
+
+/* رسمة زرار أعياد الميلاد */
+.birthday-art{
+  width:100%;
+  height:100%;
+  min-height:130px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:5px;
+  background:
+    radial-gradient(circle at center,#246347 0%,#0b3025 55%,#061e18 100%);
+  color:var(--gold2);
+  text-shadow:0 3px 12px #000;
+}
+
+.birthday-cake{
+  font-size:65px;
+  line-height:1.2;
+  filter:drop-shadow(0 5px 5px #0008);
+}
+
+.birthday-balloons{
+  font-size:29px;
+  letter-spacing:5px;
+}
+
+.birthday-caption{
+  font-size:14px;
+  font-weight:bold;
+  color:var(--gold2);
 }
 
 /* محتوى الأقسام */
@@ -303,7 +332,6 @@ main{
   font-weight:bold;
 }
 
-/* أرقام التليفونات */
 .phone-value{
   grid-column:2/4;
   display:block;
@@ -395,7 +423,6 @@ footer{
 
 <header class="hero">
 
-<!-- صورة النسر الذهبية من مجلد public -->
 <img
   class="hero-art"
   src="/eagle-vip.png"
@@ -440,7 +467,7 @@ footer{
 
 <script>
 
-/* الأقسام الرئيسية الخمسة */
+/* الأقسام الرئيسية الستة */
 const SECTIONS=[
   {
     name:"الميراج",
@@ -461,6 +488,10 @@ const SECTIONS=[
   {
     name:"دليل التليفونات الداخلية",
     image:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"
+  },
+  {
+    name:"أعياد الميلاد",
+    birthday:true
   }
 ];
 
@@ -586,36 +617,27 @@ function showCategory(section,category,button){
 
       return `
         <div class="item-row">
-
-          <div class="item-name">
-            ${esc(x.item)}
-          </div>
-
+          <div class="item-name">${esc(x.item)}</div>
           <a class="phone-value"
              href="tel:${esc(phoneLink)}"
              aria-label="اتصال بـ ${esc(x.item)}">
              ${esc(phoneText||"—")}
           </a>
-
         </div>`;
     }
 
     return `
       <div class="item-row">
-
         <div class="item-name">
           ${esc(x.item)}
           ${note}
         </div>
-
         <div class="price">
           ${x.civilian_price==null?"—":esc(x.civilian_price)}
         </div>
-
         <div class="price">
           ${x.member_price==null?"—":esc(x.member_price)}
         </div>
-
       </div>`;
 
   }).join("");
@@ -637,12 +659,25 @@ function drawSections(){
     const art=document.createElement("div");
     art.className="art";
 
-    const img=document.createElement("img");
-    img.src=s.image;
-    img.alt=s.name;
-    img.loading="lazy";
+    if(s.birthday){
 
-    art.appendChild(img);
+      art.innerHTML=`
+        <div class="birthday-art">
+          <div class="birthday-balloons">🎈 ✨ 🎈</div>
+          <div class="birthday-cake">🎂</div>
+          <div class="birthday-caption">HAPPY BIRTHDAY</div>
+        </div>
+      `;
+
+    }else{
+
+      const img=document.createElement("img");
+      img.src=s.image;
+      img.alt=s.name;
+      img.loading="lazy";
+      art.appendChild(img);
+
+    }
 
     const title=document.createElement("span");
     title.textContent=s.name;
