@@ -16,496 +16,204 @@
   --gold2:#f3dfa0;
   --paper:#fffdf7;
 }
-
 *{box-sizing:border-box}
-
 body{
-  margin:0;
-  color:#26352d;
-  font-family:Tahoma,Arial,sans-serif;
+  margin:0;color:#26352d;font-family:Tahoma,Arial,sans-serif;
   background:radial-gradient(ellipse at top,#173e30 0%,#071d17 58%,#04130f 100%);
 }
-
 .hero{
-  position:relative;
-  overflow:hidden;
+  position:relative;overflow:hidden;
   background:radial-gradient(ellipse at center,#1b5741 0%,#082d25 62%,#031710 100%);
-  border-bottom:4px solid var(--gold);
-  box-shadow:0 8px 25px #0007;
+  border-bottom:4px solid var(--gold);box-shadow:0 8px 25px #0007;
 }
-
 .hero:before,.hero:after{
-  content:"";
-  position:absolute;
-  width:180px;
-  height:180px;
-  border:1px solid #d7b65f35;
-  border-radius:50%;
-  top:20px;
-  pointer-events:none;
+  content:"";position:absolute;width:180px;height:180px;
+  border:1px solid #d7b65f35;border-radius:50%;top:20px;pointer-events:none;
 }
-.hero:before{right:-100px}
-.hero:after{left:-100px}
-
+.hero:before{right:-100px}.hero:after{left:-100px}
 .hero-art{
-  width:100%;
-  height:230px;
-  display:block;
-  position:relative;
-  z-index:1;
-  object-fit:contain;
-  object-position:center;
-  padding:5px 12px;
+  width:100%;height:230px;display:block;position:relative;z-index:1;
+  object-fit:contain;object-position:center;padding:5px 12px;
 }
-
 .hero-title{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  color:var(--gold2);
+  position:relative;z-index:2;text-align:center;color:var(--gold2);
   padding:17px 10px 21px;
   background:linear-gradient(90deg,#041710,#124532,#041710);
   border-top:1px solid #d7b65f88;
 }
-
-.hero-title strong{
-  display:block;
-  font-size:clamp(21px,5vw,32px);
-  text-shadow:0 2px 8px #000;
-}
-
+.hero-title strong{display:block;font-size:clamp(21px,5vw,32px);text-shadow:0 2px 8px #000}
 .hero-title span{
-  display:block;
-  margin-top:7px;
-  font:700 23px Georgia,serif;
-  letter-spacing:8px;
-  color:#fff0bd;
-  text-shadow:0 2px 8px #000;
+  display:block;margin-top:7px;font:700 23px Georgia,serif;
+  letter-spacing:8px;color:#fff0bd;text-shadow:0 2px 8px #000;
 }
-
-main{
-  max-width:1050px;
-  margin:25px auto;
-  padding:0 13px;
-}
-
-.welcome{
-  color:var(--gold2);
-  text-align:center;
-  font-size:15px;
-  margin:0 0 18px;
-  letter-spacing:.3px;
-}
-
-.section-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:14px;
-}
-
+main{max-width:1050px;margin:25px auto;padding:0 13px}
+.welcome{color:var(--gold2);text-align:center;font-size:15px;margin:0 0 18px;letter-spacing:.3px}
+.section-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .section-card{
-  position:relative;
-  display:block;
-  padding:0;
-  overflow:hidden;
-  border:2px solid var(--gold);
-  border-radius:15px;
-  background:#082b21;
-  color:#fff0bd;
-  box-shadow:0 7px 18px #0008,inset 0 0 0 1px #fff2;
-  cursor:pointer;
-  text-align:center;
-  transition:transform .2s,box-shadow .2s;
+  position:relative;display:block;padding:0;overflow:hidden;
+  border:2px solid var(--gold);border-radius:15px;background:#082b21;
+  color:#fff0bd;box-shadow:0 7px 18px #0008,inset 0 0 0 1px #fff2;
+  cursor:pointer;text-align:center;transition:transform .2s,box-shadow .2s;
 }
-
 .section-card:active{transform:scale(.975)}
-
 .section-card .art{
-  display:block;
-  position:relative;
-  width:100%;
-  aspect-ratio:1.45/1;
-  overflow:hidden;
-  background:#0b3025;
+  display:block;position:relative;width:100%;aspect-ratio:1.45/1;
+  overflow:hidden;background:#0b3025;
 }
-
 .section-card .art img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform .35s;
-  filter:brightness(.78) saturate(.9);
+  display:block;width:100%;height:100%;object-fit:cover;
+  transition:transform .35s;filter:brightness(.78) saturate(.9);
 }
-
-.section-card:active .art img{
-  transform:scale(1.04);
-}
-
+.section-card:active .art img{transform:scale(1.04)}
 .section-card .art:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(0deg,#031710b8 0%,transparent 65%),
-             linear-gradient(135deg,#d7b65f20,transparent 45%);
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,#031710b8 0%,transparent 65%),linear-gradient(135deg,#d7b65f20,transparent 45%);
   pointer-events:none;
 }
-
 .section-card span{
-  display:block;
-  position:relative;
-  padding:14px 6px;
-  color:var(--gold2);
-  font-weight:bold;
-  font-size:16px;
+  display:block;position:relative;padding:14px 6px;color:var(--gold2);
+  font-weight:bold;font-size:16px;
   background:linear-gradient(100deg,#061e18,#14503a,#061e18);
-  border-top:1px solid var(--gold);
-  text-shadow:0 2px 4px #000;
+  border-top:1px solid var(--gold);text-shadow:0 2px 4px #000;
 }
-
-.dynamic-art{
-  width:100%;
-  height:100%;
-  min-height:130px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  gap:12px;
+.dynamic-art,.birthday-art{
+  width:100%;height:100%;min-height:130px;display:flex;
+  align-items:center;justify-content:center;flex-direction:column;
   background:radial-gradient(circle at center,#246347 0%,#0b3025 55%,#061e18 100%);
   color:var(--gold2);
 }
-
-.dynamic-art .symbol{
-  font-size:65px;
-  filter:drop-shadow(0 5px 5px #0008);
-}
-
-.dynamic-art small{
-  font-weight:bold;
-  font-size:14px;
-}
-
-.birthday-art{
-  width:100%;
-  height:100%;
-  min-height:130px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  gap:5px;
-  background:radial-gradient(circle at center,#246347 0%,#0b3025 55%,#061e18 100%);
-  color:var(--gold2);
-  text-shadow:0 3px 12px #000;
-}
-
-.birthday-cake{
-  font-size:65px;
-  line-height:1.2;
-  filter:drop-shadow(0 5px 5px #0008);
-}
-
-.birthday-balloons{
-  font-size:29px;
-  letter-spacing:5px;
-}
-
-.birthday-caption{
-  font-size:14px;
-  font-weight:bold;
-  color:var(--gold2);
-}
-
+.dynamic-art{gap:12px}
+.dynamic-art .symbol{font-size:65px;filter:drop-shadow(0 5px 5px #0008)}
+.dynamic-art small{font-weight:bold;font-size:14px}
+.birthday-art{gap:5px;text-shadow:0 3px 12px #000}
+.birthday-cake{font-size:65px;line-height:1.2;filter:drop-shadow(0 5px 5px #0008)}
+.birthday-balloons{font-size:29px;letter-spacing:5px}
+.birthday-caption{font-size:14px;font-weight:bold;color:var(--gold2)}
 .panel{
-  display:none;
-  background:var(--paper);
-  border:2px solid var(--gold);
-  border-radius:15px;
-  padding:14px;
-  margin-top:18px;
-  box-shadow:0 8px 25px #0005;
+  display:none;background:var(--paper);border:2px solid var(--gold);
+  border-radius:15px;padding:14px;margin-top:18px;box-shadow:0 8px 25px #0005;
 }
-
 .panel.active{display:block}
-
 .panel-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
-  border-bottom:2px solid var(--gold);
-  padding-bottom:11px;
-  margin-bottom:13px;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  border-bottom:2px solid var(--gold);padding-bottom:11px;margin-bottom:13px;
 }
-
-.panel-head h2{
-  margin:0;
-  color:var(--green);
-  font-size:20px;
-}
-
+.panel-head h2{margin:0;color:var(--green);font-size:20px}
 .back,.cat{
-  border:1px solid var(--gold);
-  border-radius:9px;
-  background:var(--green);
-  color:#fff0bd;
-  padding:10px;
-  font-weight:bold;
-  cursor:pointer;
+  border:1px solid var(--gold);border-radius:9px;background:var(--green);
+  color:#fff0bd;padding:10px;font-weight:bold;cursor:pointer;
 }
-
 .cats{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(135px,1fr));
-  gap:12px;
-  align-items:stretch;
-  width:100%;
-  margin-top:12px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));
+  gap:12px;align-items:stretch;width:100%;margin-top:12px;
 }
-
 .cat{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height:52px;
-  width:100%;
-  padding:12px 8px;
-  border:1.5px solid var(--gold);
-  border-radius:11px;
-  background:linear-gradient(135deg,#061e18,#14503a,#061e18);
-  color:#fff0bd;
-  font-family:Tahoma,Arial,sans-serif;
-  font-size:14px;
-  font-weight:bold;
-  line-height:1.5;
-  text-align:center;
-  white-space:normal;
-  overflow-wrap:anywhere;
-  box-shadow:0 3px 8px #0002;
-  cursor:pointer;
-  transition:all .2s ease;
+  display:flex;align-items:center;justify-content:center;min-height:52px;
+  width:100%;padding:12px 8px;border:1.5px solid var(--gold);
+  border-radius:11px;background:linear-gradient(135deg,#061e18,#14503a,#061e18);
+  color:#fff0bd;font-family:Tahoma,Arial,sans-serif;font-size:14px;
+  font-weight:bold;line-height:1.5;text-align:center;white-space:normal;
+  overflow-wrap:anywhere;box-shadow:0 3px 8px #0002;cursor:pointer;transition:all .2s ease;
 }
-
 .cat.active{
   background:linear-gradient(135deg,#f3dfa0,#c9a64e);
-  color:#061e18;
-  border-color:#a98635;
-  box-shadow:0 3px 10px #c9a64e55;
+  color:#061e18;border-color:#a98635;box-shadow:0 3px 10px #c9a64e55;
 }
-
 .cat:active{transform:scale(.97)}
-
-.item-table{
-  margin-top:14px;
-  border:1px solid #d9c58a;
-  border-radius:12px;
-  overflow:hidden;
-}
-
+.item-table{margin-top:14px;border:1px solid #d9c58a;border-radius:12px;overflow:hidden}
 .item-head,.item-row{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 90px 90px;
-  align-items:stretch;
+  display:grid;grid-template-columns:minmax(0,1fr) 90px 90px;align-items:stretch;
 }
-
 .item-head{
   background:linear-gradient(100deg,#c9a64e,#f3dfa0,#c9a64e);
-  color:#172b22;
-  font-weight:bold;
-  text-align:center;
+  color:#172b22;font-weight:bold;text-align:center;
 }
-
-.item-head>div{
-  padding:10px 5px;
-  border-left:1px solid #a78a43;
-}
-
-.item-row{
-  background:#fffef9;
-  border-top:1px solid #eadfbd;
-}
-
+.item-head>div{padding:10px 5px;border-left:1px solid #a78a43}
+.item-row{background:#fffef9;border-top:1px solid #eadfbd}
 .item-row:nth-child(odd){background:#f8f4e9}
-
 .item-name{
-  padding:12px 10px;
-  text-align:right;
-  font-weight:bold;
-  align-self:center;
-  overflow-wrap:anywhere;
+  padding:12px 10px;text-align:right;font-weight:bold;
+  align-self:center;overflow-wrap:anywhere;
 }
-
 .price{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:8px 4px;
-  text-align:center;
-  border-right:1px solid #eadfbd;
-  color:#5e4a19;
-  font-weight:bold;
+  display:flex;align-items:center;justify-content:center;padding:8px 4px;
+  text-align:center;border-right:1px solid #eadfbd;color:#5e4a19;font-weight:bold;
 }
-
 .phone-value{
-  grid-column:2/4;
-  display:block;
-  direction:ltr;
-  text-align:left;
-  padding:12px 10px;
-  color:var(--green);
-  font-weight:bold;
-  text-decoration:none;
-  align-self:center;
+  grid-column:2/4;display:block;direction:ltr;text-align:left;
+  padding:12px 10px;color:var(--green);font-weight:bold;
+  text-decoration:none;align-self:center;
 }
-
-.phone-value:active{
-  color:#9a762d;
-  text-decoration:underline;
-}
-
-.note{
-  font-size:11px;
-  color:#777;
-  margin-top:4px;
-}
-
+.phone-value:active{color:#9a762d;text-decoration:underline}
+.note{font-size:11px;color:#777;margin-top:4px}
 .loading,.empty{
-  padding:20px;
-  text-align:center;
-  color:#777;
-  grid-column:1/-1;
-  background:#fffdf7;
-  border-radius:10px;
+  padding:20px;text-align:center;color:#777;grid-column:1/-1;
+  background:#fffdf7;border-radius:10px;
 }
-
 .admin{
-  display:block;
-  width:max-content;
-  margin:20px auto 0;
-  border:1px solid var(--gold);
-  border-radius:10px;
-  padding:11px 25px;
-  color:var(--gold2);
+  display:block;width:max-content;margin:20px auto 0;border:1px solid var(--gold);
+  border-radius:10px;padding:11px 25px;color:var(--gold2);
   background:linear-gradient(100deg,#061e18,#14503a,#061e18);
-  text-decoration:none;
-  font-weight:bold;
-  box-shadow:0 4px 12px #0005;
+  text-decoration:none;font-weight:bold;box-shadow:0 4px 12px #0005;
 }
-
 footer{
-  margin-top:28px;
-  background:linear-gradient(90deg,#041710,#0d3c2d,#041710);
-  color:#ead69b;
-  text-align:center;
-  padding:18px 10px;
-  border-top:3px solid var(--gold);
-  font-size:13px;
+  margin-top:28px;background:linear-gradient(90deg,#041710,#0d3c2d,#041710);
+  color:#ead69b;text-align:center;padding:18px 10px;
+  border-top:3px solid var(--gold);font-size:13px;
 }
-
 @media(min-width:650px){
   .section-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .hero-art{height:310px}
   .section-card .art{aspect-ratio:1.55/1}
 }
-
 @media(max-width:380px){
-  .cats{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:9px;
-  }
-
-  .cat{
-    min-height:48px;
-    font-size:13px;
-    padding:10px 5px;
-  }
-
-  .item-head,.item-row{
-    grid-template-columns:minmax(0,1fr) 76px 76px;
-  }
-
+  .cats{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .cat{min-height:48px;font-size:13px;padding:10px 5px}
+  .item-head,.item-row{grid-template-columns:minmax(0,1fr) 76px 76px}
   .item-head>div{font-size:12px}
   .item-name,.price{font-size:13px}
   .section-card span{font-size:14px}
 }
 </style>
 </head>
-
 <body>
-
 <header class="hero">
-
-<img
-  class="hero-art"
-  src="/eagle-vip.png"
-  alt="النسر الذهبي وطائرات نادي النسور"
-  fetchpriority="high"
->
-
+<img class="hero-art" src="/eagle-vip.png" alt="النسر الذهبي وطائرات نادي النسور" fetchpriority="high">
 <div class="hero-title">
   <strong>دار القوات الجوية (نادي النسور)</strong>
   <span>MENU</span>
 </div>
-
 </header>
 
 <main>
-
 <p class="welcome">مرحباً بكم في منيو نادي النسور</p>
-
 <div id="home" class="section-grid">
   <div class="loading">جاري تحميل المنيو...</div>
 </div>
 
 <section id="sectionPanel" class="panel">
-
   <div class="panel-head">
     <h2 id="sectionTitle"></h2>
     <button class="back" onclick="showHome()">الأقسام الرئيسية</button>
   </div>
-
   <div id="categories" class="cats"></div>
   <div id="items" class="item-table"></div>
-
 </section>
 
 <a class="admin" href="/admin.html">دخول لوحة الإدارة</a>
-
 </main>
 
-<footer>
-أهلاً وسهلاً بكم في دار القوات الجوية (نادي النسور)
-</footer>
+<footer>أهلاً وسهلاً بكم في دار القوات الجوية (نادي النسور)</footer>
 
 <script>
-
 /* الأقسام الأساسية */
 const DEFAULT_SECTIONS=[
-  {
-    name:"الميراج",
-    image:"https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    name:"المطعم الرئيسي",
-    image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    name:"مطعم الفندق",
-    image:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    name:"كافتريا الحديقة",
-    image:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    name:"دليل التليفونات الداخلية",
-    image:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    name:"أعياد الميلاد",
-    birthday:true
-  }
+  {name:"الميراج",image:"https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85"},
+  {name:"المطعم الرئيسي",image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85"},
+  {name:"مطعم الفندق",image:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=85"},
+  {name:"كافتريا الحديقة",image:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=85"},
+  {name:"دليل التليفونات الداخلية",image:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"},
+  {name:"أعياد الميلاد",birthday:true}
 ];
 
 let allItems=[];
@@ -516,142 +224,125 @@ const panel=document.getElementById("sectionPanel");
 const categories=document.getElementById("categories");
 const itemsBox=document.getElementById("items");
 
-/* تنظيف النصوص ومقارنة أسماء الأقسام */
+/*
+  توحيد أسماء الأقسام:
+  - إزالة التشكيل والتطويل
+  - توحيد أشكال الألف
+  - تجاهل المسافات الزائدة
+*/
+function normalizeName(value){
+  return String(value??"")
+    .trim()
+    .replace(/[\u064B-\u065F\u0670\u0640]/g,"")
+    .replace(/[أإآٱ]/g,"ا")
+    .replace(/\s+/g," ")
+    .toLowerCase();
+}
+
 function clean(v){
   return String(v??"").trim();
 }
 
-/* حماية النصوص */
 function esc(v){
   return String(v??"").replace(/[&<>"']/g,c=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   }[c]));
 }
 
-/* ترتيب الأصناف */
 function sortItems(a,b){
   return String(a.sort_order??"").localeCompare(
-    String(b.sort_order??""),
-    undefined,
-    {numeric:true}
+    String(b.sort_order??""),undefined,{numeric:true}
   );
 }
 
-/* تكوين الأقسام تلقائياً من بيانات قاعدة البيانات */
+/* البحث عن القسم الأساسي حتى لو اختلفت الهمزة */
+function findDefaultSection(name){
+  const key=normalizeName(name);
+  return DEFAULT_SECTIONS.find(s=>normalizeName(s.name)===key);
+}
+
+/* تكوين الأقسام مع منع التكرار */
 function buildSections(){
-
-  const result=[...DEFAULT_SECTIONS];
-
-  const existing=new Set(
-    result.map(s=>clean(s.name))
-  );
+  const result=DEFAULT_SECTIONS.map(s=>({...s}));
+  const existing=new Set(result.map(s=>normalizeName(s.name)));
 
   allItems.forEach(item=>{
-
     const name=clean(item.section);
+    if(!name)return;
 
-    if(!name || existing.has(name)) return;
+    const key=normalizeName(name);
+    if(existing.has(key))return;
 
-    existing.add(name);
-
-    result.push({
-      name:name,
-      dynamic:true
-    });
-
+    existing.add(key);
+    result.push({name:name,dynamic:true});
   });
 
   SECTIONS=result;
 }
 
+/* مطابقة اسم القسم */
+function sameSection(a,b){
+  return normalizeName(a)===normalizeName(b);
+}
+
 /* الرجوع للرئيسية */
 function showHome(){
-
   panel.classList.remove("active");
   home.style.display="grid";
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 /* فتح القسم */
 function showSection(name){
+  const section=SECTIONS.find(s=>sameSection(s.name,name));
+  const displayName=section?section.name:name;
 
   const rows=allItems
-    .filter(x=>clean(x.section)===clean(name))
+    .filter(x=>sameSection(x.section,displayName))
     .sort(sortItems);
 
-  document.getElementById("sectionTitle").textContent=name;
-
+  document.getElementById("sectionTitle").textContent=displayName;
   home.style.display="none";
   panel.classList.add("active");
 
-  const cats=[
-    ...new Set(
-      rows.map(x=>clean(x.category)||"أصناف متنوعة")
-    )
-  ];
+  const cats=[...new Set(
+    rows.map(x=>clean(x.category)||"أصناف متنوعة")
+  )];
 
   categories.innerHTML="";
   itemsBox.innerHTML="";
 
   cats.forEach((cat,i)=>{
-
     const b=document.createElement("button");
-
     b.className="cat"+(i===0?" active":"");
     b.textContent=cat;
-
-    b.onclick=()=>showCategory(name,cat,b);
-
+    b.onclick=()=>showCategory(displayName,cat,b);
     categories.appendChild(b);
-
   });
 
   if(cats.length){
-
-    showCategory(
-      name,
-      cats[0],
-      categories.firstElementChild
-    );
-
+    showCategory(displayName,cats[0],categories.firstElementChild);
   }else{
-
-    itemsBox.innerHTML=
-      '<div class="empty">لا توجد أصناف مسجلة في هذا القسم</div>';
-
+    itemsBox.innerHTML='<div class="empty">لا توجد أصناف مسجلة في هذا القسم</div>';
   }
 
-  panel.scrollIntoView({
-    behavior:"smooth",
-    block:"start"
-  });
-
+  panel.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
 /* عرض التصنيف */
 function showCategory(section,category,button){
-
   [...categories.children].forEach(b=>
     b.classList.toggle("active",b===button)
   );
 
   const rows=allItems
     .filter(x=>
-      clean(x.section)===clean(section) &&
+      sameSection(x.section,section) &&
       (clean(x.category)||"أصناف متنوعة")===clean(category)
     )
     .sort(sortItems);
 
-  const isPhone=clean(section)==="دليل التليفونات الداخلية";
+  const isPhone=sameSection(section,"دليل التليفونات الداخلية");
 
   let html=isPhone?"":`
     <div class="item-head">
@@ -661,63 +352,40 @@ function showCategory(section,category,button){
     </div>`;
 
   html+=rows.map(x=>{
-
-    const note=x.notes?
-      `<div class="note">${esc(x.notes)}</div>`:"";
+    const note=x.notes?`<div class="note">${esc(x.notes)}</div>`:"";
 
     if(isPhone){
-
       const phoneText=String(x.notes||"").trim();
-
       const phoneLink=phoneText
-        .replace(/[٠-٩]/g,d=>
-          "0123456789"["٠١٢٣٤٥٦٧٨٩".indexOf(d)]
-        )
-        .replace(/[۰-۹]/g,d=>
-          "0123456789"["۰۱۲۳۴۵۶۷۸۹".indexOf(d)]
-        )
+        .replace(/[٠-٩]/g,d=>"0123456789"["٠١٢٣٤٥٦٧٨٩".indexOf(d)])
+        .replace(/[۰-۹]/g,d=>"0123456789"["۰۱۲۳۴۵۶۷۸۹".indexOf(d)])
         .replace(/[^0-9+]/g,"");
 
       return `
         <div class="item-row">
           <div class="item-name">${esc(x.item)}</div>
-          <a class="phone-value"
-             href="tel:${esc(phoneLink)}"
-             aria-label="اتصال بـ ${esc(x.item)}">
-             ${esc(phoneText||"—")}
+          <a class="phone-value" href="tel:${esc(phoneLink)}" aria-label="اتصال بـ ${esc(x.item)}">
+            ${esc(phoneText||"—")}
           </a>
         </div>`;
-
     }
 
     return `
       <div class="item-row">
-        <div class="item-name">
-          ${esc(x.item)}
-          ${note}
-        </div>
-        <div class="price">
-          ${x.civilian_price==null?"—":esc(x.civilian_price)}
-        </div>
-        <div class="price">
-          ${x.member_price==null?"—":esc(x.member_price)}
-        </div>
+        <div class="item-name">${esc(x.item)}${note}</div>
+        <div class="price">${x.civilian_price==null?"—":esc(x.civilian_price)}</div>
+        <div class="price">${x.member_price==null?"—":esc(x.member_price)}</div>
       </div>`;
-
   }).join("");
 
-  itemsBox.innerHTML=html||
-    '<div class="empty">لا توجد أصناف في هذا التصنيف</div>';
-
+  itemsBox.innerHTML=html||'<div class="empty">لا توجد أصناف في هذا التصنيف</div>';
 }
 
 /* رسم الأزرار الرئيسية */
 function drawSections(){
-
   home.innerHTML="";
 
   SECTIONS.forEach(s=>{
-
     const b=document.createElement("button");
     b.className="section-card";
     b.type="button";
@@ -726,92 +394,60 @@ function drawSections(){
     art.className="art";
 
     if(s.birthday){
-
       art.innerHTML=`
         <div class="birthday-art">
           <div class="birthday-balloons">🎈 ✨ 🎈</div>
           <div class="birthday-cake">🎂</div>
           <div class="birthday-caption">HAPPY BIRTHDAY</div>
-        </div>
-      `;
-
+        </div>`;
     }else if(s.dynamic){
-
       art.innerHTML=`
         <div class="dynamic-art">
           <div class="symbol">📋</div>
           <small>${esc(s.name)}</small>
-        </div>
-      `;
-
+        </div>`;
     }else{
-
       const img=document.createElement("img");
       img.src=s.image;
       img.alt=s.name;
       img.loading="lazy";
       art.appendChild(img);
-
     }
 
     const title=document.createElement("span");
     title.textContent=s.name;
-
     b.appendChild(art);
     b.appendChild(title);
-
     b.onclick=()=>showSection(s.name);
-
     home.appendChild(b);
-
   });
-
 }
 
 /* تحميل المنيو من قاعدة البيانات */
 async function loadMenu(){
-
   try{
-
     const r=await fetch("/api/menu",{
       headers:{"accept":"application/json"}
     });
-
-    if(!r.ok){
-      throw new Error("HTTP "+r.status);
-    }
+    if(!r.ok)throw new Error("HTTP "+r.status);
 
     const d=await r.json();
-
-    if(!Array.isArray(d.items)){
-      throw new Error("صيغة بيانات المنيو غير صحيحة");
-    }
+    if(!Array.isArray(d.items))throw new Error("صيغة بيانات المنيو غير صحيحة");
 
     allItems=d.items;
 
-    /* إنشاء الأقسام تلقائياً */
     buildSections();
-
-    /* رسم الأزرار الرئيسية */
     drawSections();
-
   }catch(e){
-
     home.innerHTML=`
       <div class="empty">
         تعذر تحميل المنيو. تأكد من اتصال قاعدة البيانات ثم أعد المحاولة.
       </div>`;
-
     console.error("Menu loading error:",e);
-
   }
-
 }
 
-/* بدء تحميل المنيو */
 loadMenu();
-
 </script>
-
 </body>
 </html>
