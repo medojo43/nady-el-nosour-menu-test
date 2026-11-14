@@ -23,15 +23,13 @@ body{
   margin:0;
   color:#26352d;
   font-family:Tahoma,Arial,sans-serif;
-  background:
-    radial-gradient(ellipse at top,#173e30 0%,#071d17 58%,#04130f 100%);
+  background:radial-gradient(ellipse at top,#173e30 0%,#071d17 58%,#04130f 100%);
 }
 
 .hero{
   position:relative;
   overflow:hidden;
-  background:
-    radial-gradient(ellipse at center,#1b5741 0%,#082d25 62%,#031710 100%);
+  background:radial-gradient(ellipse at center,#1b5741 0%,#082d25 62%,#031710 100%);
   border-bottom:4px solid var(--gold);
   box-shadow:0 8px 25px #0007;
 }
@@ -148,9 +146,8 @@ main{
   content:"";
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(0deg,#031710b8 0%,transparent 65%),
-    linear-gradient(135deg,#d7b65f20,transparent 45%);
+  background:linear-gradient(0deg,#031710b8 0%,transparent 65%),
+             linear-gradient(135deg,#d7b65f20,transparent 45%);
   pointer-events:none;
 }
 
@@ -166,7 +163,29 @@ main{
   text-shadow:0 2px 4px #000;
 }
 
-/* رسمة زرار أعياد الميلاد */
+.dynamic-art{
+  width:100%;
+  height:100%;
+  min-height:130px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:12px;
+  background:radial-gradient(circle at center,#246347 0%,#0b3025 55%,#061e18 100%);
+  color:var(--gold2);
+}
+
+.dynamic-art .symbol{
+  font-size:65px;
+  filter:drop-shadow(0 5px 5px #0008);
+}
+
+.dynamic-art small{
+  font-weight:bold;
+  font-size:14px;
+}
+
 .birthday-art{
   width:100%;
   height:100%;
@@ -176,8 +195,7 @@ main{
   justify-content:center;
   flex-direction:column;
   gap:5px;
-  background:
-    radial-gradient(circle at center,#246347 0%,#0b3025 55%,#061e18 100%);
+  background:radial-gradient(circle at center,#246347 0%,#0b3025 55%,#061e18 100%);
   color:var(--gold2);
   text-shadow:0 3px 12px #000;
 }
@@ -199,7 +217,6 @@ main{
   color:var(--gold2);
 }
 
-/* محتوى الأقسام */
 .panel{
   display:none;
   background:var(--paper);
@@ -238,7 +255,6 @@ main{
   cursor:pointer;
 }
 
-/* أزرار التصنيفات */
 .cats{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(135px,1fr));
@@ -280,7 +296,6 @@ main{
 
 .cat:active{transform:scale(.97)}
 
-/* جدول الأصناف والأسعار */
 .item-table{
   margin-top:14px;
   border:1px solid #d9c58a;
@@ -389,9 +404,7 @@ footer{
 }
 
 @media(min-width:650px){
-  .section-grid{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-  }
+  .section-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .hero-art{height:310px}
   .section-card .art{aspect-ratio:1.55/1}
 }
@@ -467,8 +480,8 @@ footer{
 
 <script>
 
-/* الأقسام الرئيسية الستة */
-const SECTIONS=[
+/* الأقسام الأساسية */
+const DEFAULT_SECTIONS=[
   {
     name:"الميراج",
     image:"https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85"
@@ -496,11 +509,17 @@ const SECTIONS=[
 ];
 
 let allItems=[];
+let SECTIONS=[];
 
 const home=document.getElementById("home");
 const panel=document.getElementById("sectionPanel");
 const categories=document.getElementById("categories");
 const itemsBox=document.getElementById("items");
+
+/* تنظيف النصوص ومقارنة أسماء الأقسام */
+function clean(v){
+  return String(v??"").trim();
+}
 
 /* حماية النصوص */
 function esc(v){
@@ -522,18 +541,51 @@ function sortItems(a,b){
   );
 }
 
+/* تكوين الأقسام تلقائياً من بيانات قاعدة البيانات */
+function buildSections(){
+
+  const result=[...DEFAULT_SECTIONS];
+
+  const existing=new Set(
+    result.map(s=>clean(s.name))
+  );
+
+  allItems.forEach(item=>{
+
+    const name=clean(item.section);
+
+    if(!name || existing.has(name)) return;
+
+    existing.add(name);
+
+    result.push({
+      name:name,
+      dynamic:true
+    });
+
+  });
+
+  SECTIONS=result;
+}
+
 /* الرجوع للرئيسية */
 function showHome(){
+
   panel.classList.remove("active");
   home.style.display="grid";
-  window.scrollTo({top:0,behavior:"smooth"});
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
 }
 
 /* فتح القسم */
 function showSection(name){
 
   const rows=allItems
-    .filter(x=>x.section===name)
+    .filter(x=>clean(x.section)===clean(name))
     .sort(sortItems);
 
   document.getElementById("sectionTitle").textContent=name;
@@ -542,7 +594,9 @@ function showSection(name){
   panel.classList.add("active");
 
   const cats=[
-    ...new Set(rows.map(x=>x.category||"أصناف متنوعة"))
+    ...new Set(
+      rows.map(x=>clean(x.category)||"أصناف متنوعة")
+    )
   ];
 
   categories.innerHTML="";
@@ -558,11 +612,16 @@ function showSection(name){
     b.onclick=()=>showCategory(name,cat,b);
 
     categories.appendChild(b);
+
   });
 
   if(cats.length){
 
-    showCategory(name,cats[0],categories.firstElementChild);
+    showCategory(
+      name,
+      cats[0],
+      categories.firstElementChild
+    );
 
   }else{
 
@@ -571,7 +630,11 @@ function showSection(name){
 
   }
 
-  panel.scrollIntoView({behavior:"smooth",block:"start"});
+  panel.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+
 }
 
 /* عرض التصنيف */
@@ -583,12 +646,12 @@ function showCategory(section,category,button){
 
   const rows=allItems
     .filter(x=>
-      x.section===section &&
-      (x.category||"أصناف متنوعة")===category
+      clean(x.section)===clean(section) &&
+      (clean(x.category)||"أصناف متنوعة")===clean(category)
     )
     .sort(sortItems);
 
-  const isPhone=section==="دليل التليفونات الداخلية";
+  const isPhone=clean(section)==="دليل التليفونات الداخلية";
 
   let html=isPhone?"":`
     <div class="item-head">
@@ -624,6 +687,7 @@ function showCategory(section,category,button){
              ${esc(phoneText||"—")}
           </a>
         </div>`;
+
     }
 
     return `
@@ -644,9 +708,10 @@ function showCategory(section,category,button){
 
   itemsBox.innerHTML=html||
     '<div class="empty">لا توجد أصناف في هذا التصنيف</div>';
+
 }
 
-/* رسم الأزرار الرئيسية بالصور */
+/* رسم الأزرار الرئيسية */
 function drawSections(){
 
   home.innerHTML="";
@@ -655,6 +720,7 @@ function drawSections(){
 
     const b=document.createElement("button");
     b.className="section-card";
+    b.type="button";
 
     const art=document.createElement("div");
     art.className="art";
@@ -666,6 +732,15 @@ function drawSections(){
           <div class="birthday-balloons">🎈 ✨ 🎈</div>
           <div class="birthday-cake">🎂</div>
           <div class="birthday-caption">HAPPY BIRTHDAY</div>
+        </div>
+      `;
+
+    }else if(s.dynamic){
+
+      art.innerHTML=`
+        <div class="dynamic-art">
+          <div class="symbol">📋</div>
+          <small>${esc(s.name)}</small>
         </div>
       `;
 
@@ -690,6 +765,7 @@ function drawSections(){
     home.appendChild(b);
 
   });
+
 }
 
 /* تحميل المنيو من قاعدة البيانات */
@@ -707,8 +783,16 @@ async function loadMenu(){
 
     const d=await r.json();
 
-    allItems=Array.isArray(d.items)?d.items:[];
+    if(!Array.isArray(d.items)){
+      throw new Error("صيغة بيانات المنيو غير صحيحة");
+    }
 
+    allItems=d.items;
+
+    /* إنشاء الأقسام تلقائياً */
+    buildSections();
+
+    /* رسم الأزرار الرئيسية */
     drawSections();
 
   }catch(e){
@@ -721,8 +805,10 @@ async function loadMenu(){
     console.error("Menu loading error:",e);
 
   }
+
 }
 
+/* بدء تحميل المنيو */
 loadMenu();
 
 </script>
